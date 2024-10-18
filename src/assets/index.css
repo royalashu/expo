@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global CSS Variables for Dark Theme */
+:root {
+    --bg-color: #0F1621;        /* Dark background */
+    --text-color: #D6DBE4;      /* Light text */
+    --primary-color: #D3BB8A;   /* Blue primary color */
+    --secondary-color: #1D2531; /* Secondary text */
+    --card-bg-color: #161b22;   /* Background for cards */
+    --border-color: #30363d;    /* Border color */
+  }
+  
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+ 
+html,body{
+width: 100%;
+height: 100%;
+}
+
+  /* Apply Theme to the Body */
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .nav{
+    background-color: #D6DBE420;
+    /* background-color: var(--card-bg-color); */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+
+  .hero{
+    background-image: url('./batthern.png');
+    mask-image: linear-gradient(to bottom, transparent, var(--bg-color) 10% 90%, transparent);
+  }
+
+.hbtm-card{
+  background-color: #D3BB8A20;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+  
+  .slider-cont{
+    mask-image: linear-gradient(to top, transparent, var(--bg-color) 20% 80%, transparent);
+  }
+  .about-img{
+    mask-image: linear-gradient(to top, transparent, var(--bg-color) 10% 90%, transparent);
+  }
+
+
+  /* Animation for Rocket */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(-5%);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
+  
+
+  /* Course Button Styling */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--text-color);
+}
+
+.c-banner{
+  background-image: url('../assets/contact.png');
+  mask-image: linear-gradient(to top, transparent, var(--bg-color) 50% 50%, transparent);
+}
+
+.testimonials{
+  mask-image: linear-gradient(to top, transparent, var(--bg-color) 20% 80%, transparent);
+}
