@@ -6,7 +6,7 @@ const TermsAndConditions = () => {
   return (
     <>
       <Header />
-      <section className="terms-and-conditions py-[10vw] px-5">
+      <section className="terms-and-conditions py-[5vw] px-5">
         <div className="container mx-auto">
           <h1 className="text-4xl font-bold text-primary text-center mb-8">
             Terms and Conditions

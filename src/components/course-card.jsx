@@ -45,13 +45,17 @@ const TabbedCourses = () => {
               oldPrice,
               newPrice,
               img,
-              link, // Include link in course object
+              link,
             });
           }
         });
 
         setCourses(newCourses);
-        console.log("fetched courses:", newCourses);
+
+
+        console.log("fetched courses:", newCourses); // Dont forget to remove
+
+
 
         setLoading(false);
       } catch (error) {

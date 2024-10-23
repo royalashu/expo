@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
   return (
     <>
     <Header />
-      <section className="py-[10vw] px-5">
+      <section className="py-[5vw] px-5">
         <div className="container mx-auto">
           <h1 className="text-4xl font-bold text-primary text-center mb-8">
           Privacy Policy
