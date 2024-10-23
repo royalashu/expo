@@ -4,12 +4,10 @@ import logo from "../assets/logo.png";
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  window.addEventListener('resize', useState(false));
+
   const toggleNav = () => {
     setIsNavOpen((prev) => !prev);
   };
-
-  
 
   return (
     <header className="nav shadow-lg sticky z-[1000] top-0 w-full">
@@ -21,44 +19,31 @@ export default function Header() {
 
         {/* Navigation Menu */}
         <nav
-  id="navbar-default"
-  className={`${
-    isNavOpen
-      ? "flex flex-col p-3 gap-4 shadow-lg text-center absolute right-0 -bottom-56 bg-secondary rounded-lg md:hidden"
-      : "hidden"
-  } md:flex md:flex-row md:items-center md:space-x-10`}
->
-
-          <h5
-            onClick={() => (window.location.href = "/")}
-            className="hover:text-primary cursor-pointer"
-          >
+          id="navbar-default"
+          className={`${
+            isNavOpen
+              ? "flex flex-col p-3 gap-4 shadow-lg text-center absolute right-0 -bottom-56 bg-secondary rounded-lg md:hidden"
+              : "hidden"
+          } md:flex md:flex-row md:items-center md:space-x-10`}
+        >
+          <Link to="/" className="hover:text-primary cursor-pointer">
             Home
-          </h5>
-          <h5
-            onClick={() => (window.location.href = "#courses")}
-            className="hover:text-primary cursor-pointer "
-          >
+          </Link>
+          <a href="/#courses" className="hover:text-primary cursor-pointer">
             Courses
-          </h5>
-          <h5
-            onClick={() => (window.location.href = "#about")}
-            className="hover:text-primary cursor-pointer "
-          >
+          </a>
+          <a href="/#about" className="hover:text-primary cursor-pointer">
             About
-          </h5>
-          <h5
-            onClick={() => (window.location.href = "/contact-us")}
-            className="hover:text-primary cursor-pointer "
-          >
+          </a>
+          <Link to="/contact-us" className="hover:text-primary cursor-pointer">
             Contact
-          </h5>
-          <h5
-            onClick={() => (window.location.href = "/login")}
+          </Link>
+          <Link
+            to="/login"
             className="bg-primary cursor-pointer px-8 py-3 text-bg rounded-lg hover:bg-text"
           >
             Login
-          </h5>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}

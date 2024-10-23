@@ -16,7 +16,7 @@ const ContactUs = () => {
 
         {/* Contact Information Section */}
         <div className="container mx-auto px-5">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Phone Number */}
             <div className="flex items-center gap-4">
               <i className="ri-phone-fill rounded-full h-[60px] w-[60px] flex items-center justify-center bg-primary text-3xl text-white"></i>

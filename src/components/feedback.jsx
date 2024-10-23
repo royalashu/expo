@@ -88,7 +88,8 @@ const Testimonials = () => {
         >
           {feedbacks.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="testimonial-card min-h-[55vh] mx-auto cursor-pointer bg-card-bg p-8 rounded-lg shadow-lg border border-border flex flex-col justify-between h-full">
+              <div className="testimonial-card lg:h-[40vh] md:h-[52vh] mx-auto cursor-pointer bg-card-bg p-8 rounded-lg shadow-lg border border-border flex flex-col justify-between h-full">
+
                 <p className="line-clamp-6 text-lg text-feed text-text mb-6 flex-grow">
                   "{item.feedback}"
                 </p>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-// Create an initial state for courses
 const initialCourses = {
   Investing: [],
   Trading: [],
@@ -12,68 +11,68 @@ const TabbedCourses = () => {
   const [activeTab, setActiveTab] = useState("Investing");
   const [courses, setCourses] = useState(initialCourses);
   const [loading, setLoading] = useState(true);
-  const isFetched = useRef(false); // Track if data is already fetched
+  const isFetched = useRef(false); 
 
   useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch(
-          "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9iGZdSIqcr3_1InSxz-j2oaCwJoP_jQLNFYvVcIU1mfEuBtQLt0obzjDfFJUHLlZ29WFiawI4Lg1M/pub?gid=0&single=true&output=csv"
-        );
-        const text = await response.text();
-        const data = text.split("\n").slice(1);
+    const cachedCourses = sessionStorage.getItem("courses");
 
-        const newCourses = { ...initialCourses };
+    if (cachedCourses) {
+      setCourses(JSON.parse(cachedCourses));
+      setLoading(false);
+      isFetched.current = true;
+    } else {
+      const fetchCourses = async () => {
+        try {
+          const response = await fetch(
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9iGZdSIqcr3_1InSxz-j2oaCwJoP_jQLNFYvVcIU1mfEuBtQLt0obzjDfFJUHLlZ29WFiawI4Lg1M/pub?gid=0&single=true&output=csv"
+          );
+          const text = await response.text();
+          const data = text.split("\n").slice(1);
 
-        data.forEach((row) => {
-          const [
-            title,
-            instructor,
-            rating,
-            oldPrice,
-            newPrice,
-            img,
-            category,
-            link,
-          ] = row.split(",").map((item) => item.trim());
-
-          if (newCourses[category]) {
-            newCourses[category].push({
+          const newCourses = { ...initialCourses };
+          data.forEach((row) => {
+            const [
               title,
               instructor,
               rating,
               oldPrice,
               newPrice,
               img,
+              category,
               link,
-            });
-          }
-        });
+            ] = row.split(",").map((item) => item.trim());
 
-        setCourses(newCourses);
+            if (newCourses[category]) {
+              newCourses[category].push({
+                title,
+                instructor,
+                rating,
+                oldPrice,
+                newPrice,
+                img,
+                link,
+              });
+            }
+          });
 
+          setCourses(newCourses);
+          sessionStorage.setItem("courses", JSON.stringify(newCourses));
+          setLoading(false);
+        } catch (error) {
+          console.error("Error fetching courses:", error);
+          setLoading(false);
+        }
+      };
 
-        console.log("fetched courses:", newCourses); // Dont forget to remove
-
-
-
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching courses:", error);
-        setLoading(false);
+      if (!isFetched.current) {
+        fetchCourses();
+        isFetched.current = true;
       }
-    };
-
-    if (!isFetched.current) {
-      fetchCourses(); // Fetch data only if not already fetched
-      isFetched.current = true; // Set flag to true
     }
-  }, []); // Empty dependency array ensures useEffect runs once
+  }, []);
 
   if (loading) {
-    return (
-      <div className="text-center p-5 text-primary">Loading courses...</div>
-    );
+    return <div className="text-center p-5 text-primary">Loading courses...</div>;
   }
 
   return (
@@ -83,11 +82,7 @@ const TabbedCourses = () => {
           <button
             key={tab}
             className={`px-4 text-1xl md:2xl py-2 font-thin rounded-md 
-              ${
-                activeTab === tab
-                  ? "bg-primary text-bg shadow-lg"
-                  : "bg-secondary"
-              }
+              ${activeTab === tab ? "bg-primary text-bg shadow-lg" : "bg-secondary"}
               hover:bg-primary hover:text-bg transition`}
             onClick={() => setActiveTab(tab)}
           >
