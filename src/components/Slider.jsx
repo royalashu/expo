@@ -1,7 +1,6 @@
 // Slider.jsx
 import { Swiper, SwiperSlide } from 'swiper/react';
-// Import required Swiper modules
-import { Autoplay } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules'; // Import required Swiper modules
 import 'swiper/css'; // Swiper core styles
 
 import banner1 from '../assets/media/banner1.png';
@@ -16,14 +15,14 @@ const Slider = () => {
   ];
 
   return (
-    <div className="w-full mx-auto mt-12">
+    <div className="w-full">
       <Swiper
-        modules={[Autoplay]} // Add Autoplay module here
+        modules={[Autoplay]}
         spaceBetween={30}
         slidesPerView={1}
         loop={true}
         autoplay={{
-          delay: 2000,
+          delay: 3000, // Increase delay for better UX
           disableOnInteraction: false,
         }}
         className="slider-cont w-full rounded-lg overflow-hidden shadow-lg"
@@ -33,7 +32,7 @@ const Slider = () => {
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-[80vh] object-cover"
+              className="w-full object-fit"
             />
           </SwiperSlide>
         ))}

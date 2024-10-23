@@ -6,40 +6,70 @@ import 'swiper/css'; // Swiper core styles
 const Testimonials = () => {
   const feedbacks = [
     {
-      name: "Rohit Sharma",
-      title: "Entrepreneur",
+      name: "Priyanka Duvva",
+      title: "attended OPTIONS TRADING BASICS",
       feedback:
-        "Exponential World gave me the confidence and skill to navigate the financial markets. Their practical approach is unmatched!",
-      rating: 5,
+        "The way he explains the concepts are good,like anyone can understand easily. I have found perfect teacher for my requirement. ",
+      rating: 4.8,
     },
     {
-      name: "Aditi Mehta",
-      title: "Financial Analyst",
+      name: "Vikas Ghag",
+      title: "attended OPTIONS TRADING BASICS",
       feedback:
-        "I loved the way they simplified complex topics. The strategies I learned are already showing positive results in my portfolio!",
-      rating: 5,
+        "Great till now and good experience. Best knowledge provided by Paras sir. Thank you so much for your support. Highly recommended to all.",
+      rating: 4.8,
     },
     {
-      name: "Vikram Sinha",
-      title: "Trader",
+      name: "Sapna",
+      title: "attended Stock Market Trading",
       feedback:
-        "The best investment I’ve ever made was enrolling in their trading course. Highly recommend it to everyone!",
-      rating: 5,
+        "Amazing explanation on financial market. Explained approach of how to select prices And good stocks. He is best for beginners. He taught from where to start in stock market.",
+      rating: 4.8,
     },
     {
-      name: "Sanya Verma",
-      title: "Investor",
+      name: "Sagar Marick",
+      title:
+        "attended Stock Market Trading: Options Trading Strategies for Beginners",
       feedback:
-        "Their insights on long-term investment strategies have transformed the way I manage my finances. Incredible value!",
-      rating: 5,
+        "I love it it was nice to meet you and. Have a class with you. Will like to have another master class with you and hope it will be soon.",
+      rating: 4.8,
+    },
+    {
+      name: "Shivam Kalra",
+      title: "attended OPTIONS TRADING BASICS",
+      feedback:
+        "He is such a nice teacher with a deep knowledge of stock market and other financial markets too. I loved the course till now.",
+      rating: 4.8,
+    },
+    {
+      name: "Rajat Roy",
+      title: "attended Stock Market Trading",
+      feedback:
+        "Paras is a versatile genius. He has excellent communication skills and a professional stock market trainer.",
+      rating: 4.8,
+    },
+    {
+      id: 8,
+      name: "Nitish Shukla",
+      title: "attended OPTIONS TRADING BASICS",
+      feedback:
+        "This guy is amazing. Because of The tips that he gave, I made some real money. Thanks bro. Keep up the good work. ",
+      rating: 4.8,
+    },
+    {
+      name: "Afsheen Jahan",
+      title: "attended OPTIONS TRADING BASICS",
+      feedback:
+        "An exhilarating experience for me as I found the insights really helpful & value additive. If you are venturing into the world of trading, Mr. Paras Arora is the right man to be your guide and mentor for the same! ",
+      rating: 4.8,
     },
   ];
 
   return (
-    <section className="testimonials bg-secondary py-20">
+    <section className="testimonials bg-secondary py-20 flex flex-col w-full">
       <div className="container mx-auto px-5">
-        <h2 className="text-4xl font-bold text-primary text-center mb-12">
-          What Our Students Say
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+          What Our <span className='text-primary'>Students</span> Say
         </h2>
 
         <Swiper
@@ -58,22 +88,26 @@ const Testimonials = () => {
         >
           {feedbacks.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="testimonial-card cursor-pointer bg-card-bg p-8 rounded-lg shadow-lg border border-border flex flex-col justify-between h-full">
-                <p className="text-lg text-text mb-6 flex-grow">
+              <div className="testimonial-card min-h-[55vh] mx-auto cursor-pointer bg-card-bg p-8 rounded-lg shadow-lg border border-border flex flex-col justify-between h-full">
+                <p className="line-clamp-6 text-lg text-feed text-text mb-6 flex-grow">
                   "{item.feedback}"
                 </p>
                 <div className="flex items-center justify-between mt-6">
                   <div>
+
+                  <div className="rating text-yellow-400 text-xl">
+                    {"★".repeat(Math.floor(item.rating))}
+                    {item.rating % 1 ? "☆" : ""}
+                    
+                  </div>
+
                     <h3 className="text-xl font-semibold text-primary">
                       {item.name}
                     </h3>
                     <span className="text-sm text-text">
                       {item.title}
                     </span>
-                  </div>
-                  <div className="rating text-yellow-400 text-xl">
-                    {"★".repeat(Math.floor(item.rating))}
-                    {item.rating % 1 ? "☆" : ""}
+                  
                   </div>
                 </div>
               </div>

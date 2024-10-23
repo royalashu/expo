@@ -9,7 +9,6 @@ function LoginRedirect() {
   return null; // Render nothing while redirecting
 }
 
-
 const Login = () => {
   return (
       <LoginRedirect />
